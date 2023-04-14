@@ -4,7 +4,7 @@ import { createServer } from "http" // CORE MODULE
 import cors from "cors"
 import { newConnectionHandler } from "./socket/index"
 import productsRouter from "./api/products"
-import { badRequestHandler, genericErrorHandler } from "./errorHandlers"
+import { badRequestHandler, forbiddenHandler, genericErrorHandler, notFoundHandler, unauthorizedHandler } from "./errorHandlers"
 
 const expressServer = express()
 
@@ -22,6 +22,10 @@ expressServer.use(express.json())
 expressServer.use("/products", productsRouter)
 
 // ************************* ERROR HANDLERS ************************
-expressServer.use(badRequestHandler, genericErrorHandler)
+expressServer.use(badRequestHandler)
+expressServer.use(unauthorizedHandler)
+expressServer.use(forbiddenHandler)
+expressServer.use(notFoundHandler)
+expressServer.use(genericErrorHandler)
 
 export { httpServer, expressServer }
