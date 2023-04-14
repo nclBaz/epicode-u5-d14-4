@@ -5,8 +5,8 @@
 import supertest from "supertest"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import { expressServer } from "../src/server"
-import ProductsModel from "../src/api/products/model"
+import { expressServer } from "../server"
+import ProductsModel from "../api/products/model"
 
 dotenv.config() // This command forces .env vars to be loaded into process.env. This is the way to go when you can't use -r dotenv/config
 
