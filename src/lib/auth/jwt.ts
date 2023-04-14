@@ -1,8 +1,12 @@
 import createHttpError from "http-errors"
-import { RequestHandler } from "express"
-import { verifyAccessToken } from "./tools"
+import { RequestHandler, Request } from "express"
+import { verifyAccessToken, TokenPayload } from "./tools"
 
-export const JWTAuthMiddleware: RequestHandler = async (req, res, next) => {
+export interface UserRequest extends Request {
+  user?: TokenPayload
+}
+
+export const JWTAuthMiddleware: RequestHandler = async (req: UserRequest, res, next) => {
   // 1. Check if authorization header is in the request, if it is not --> 401
   if (!req.headers.authorization) {
     next(createHttpError(401, "Please provide Bearer token in authorization header"))

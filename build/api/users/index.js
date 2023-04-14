@@ -58,7 +58,7 @@ usersRouter.put("/me", jwt_1.JWTAuthMiddleware, (req, res, next) => __awaiter(vo
 }));
 usersRouter.delete("/me", jwt_1.JWTAuthMiddleware, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield model_1.default.findOneAndDelete(req.user._id);
+        yield model_1.default.findByIdAndDelete(req.user._id);
         res.status(204).send();
     }
     catch (error) {

@@ -7,7 +7,7 @@ exports.adminOnlyMiddleware = void 0;
 const http_errors_1 = __importDefault(require("http-errors"));
 const adminOnlyMiddleware = (req, res, next) => {
     // Once user is authenticated we shall check his role (Authorization)
-    if (req.user.role === "Admin") {
+    if (req.user && req.user.role === "Admin") {
         // If he/she is an admin --> next
         next();
     }

@@ -10,6 +10,7 @@ const http_1 = require("http"); // CORE MODULE
 const cors_1 = __importDefault(require("cors"));
 const index_1 = require("./socket/index");
 const products_1 = __importDefault(require("./api/products"));
+const users_1 = __importDefault(require("./api/users"));
 const errorHandlers_1 = require("./errorHandlers");
 const expressServer = (0, express_1.default)();
 exports.expressServer = expressServer;
@@ -23,6 +24,7 @@ expressServer.use((0, cors_1.default)());
 expressServer.use(express_1.default.json());
 // *************************** ENDPOINTS ***************************
 expressServer.use("/products", products_1.default);
+expressServer.use("/users", users_1.default);
 // ************************* ERROR HANDLERS ************************
 expressServer.use(errorHandlers_1.badRequestHandler);
 expressServer.use(errorHandlers_1.unauthorizedHandler);

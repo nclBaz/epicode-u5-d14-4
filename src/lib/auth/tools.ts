@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 
-interface TokenPayload {
+export interface TokenPayload {
   _id: string
   role: "User" | "Admin"
 }
